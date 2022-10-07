@@ -9,6 +9,22 @@ grails:
       # Whether to translate GORM events into Reactor events
       # Disabled by default for performance reasons
       events: false
+  plugin:
+    springsecurity:
+      ui:
+        encodePassword: false
+        password:
+          minLength: 8
+          maxLength: 64
+          validationRegex: '^.*(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&]).*$'
+        register:
+          defaultRoleNames: ["ROLE_USER"]
+      successHandler:
+        defaultTargetUrl: "/catalogo/index"
+        alwaysUseDefault: false
+        targetUrlParameter: "spring-security-redirect"
+        ajaxSuccessUrl: "/login/ajaxSuccess"
+        successHandler.useReferer: false
 info:
   app:
     name: "@info.app.name@"

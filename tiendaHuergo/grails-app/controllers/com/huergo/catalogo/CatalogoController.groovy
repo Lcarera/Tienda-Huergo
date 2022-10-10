@@ -14,7 +14,7 @@ class CatalogoController {
     ProductoService productoService
     
     def index() {
-        def prods =  (productoService.getProductos())
+        def prods = productoService.getProductos()
         [productos:productoService.getProductos() ]
     }
 

@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
         <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <asset:stylesheet src="application.css"/>
 
         <g:layoutHead/>

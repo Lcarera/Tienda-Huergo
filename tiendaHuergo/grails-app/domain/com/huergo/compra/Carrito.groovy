@@ -5,7 +5,7 @@ import com.huergo.producto.Producto
 
 class Carrito {
     static belongsTo = [usuario:User]
-    static hasMany = [productos:Producto]
+    static hasMany = [productos:ProductoVenta]
     static constraints = {
         usuario nullable:false
         productos nullable:true

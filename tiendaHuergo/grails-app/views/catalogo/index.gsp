@@ -91,22 +91,25 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-lg-4">
-        <br />
-        <div class="cardStock">
-          <img
-            src="http://www.newdesignfile.com/postpic/2012/09/small-apple-logo_154074.jpg"
-            class="logoHuergo"
-            alt="..."
-          />
-          <span class="txtNombre">Remera Azul y verde</span>
-          <span class="txtPrecio">$300</span>
-          <btn class="btnAddCarrito" onclick="addToCarrito(this.id);">
-            <span class="txtBtn">Agregar al carrito</span>
-          </btn>
-        </div>
-      </div>
+        <g:each var = "producto" in="${productos}">
+            <div class="col-lg-4">
+                <br />
+                <div class="cardStock">
+                  <img
+                    src="http://www.newdesignfile.com/postpic/2012/09/small-apple-logo_154074.jpg"
+                    class="logoHuergo"
+                    alt="..."
+                  />
+                  <span class="txtNombre">${producto.nombre}</span>
+                  <span class="txtPrecio">$${producto.precio.toString()}</span>
+                  <btn class="btnAddCarrito" onclick="addToCarrito('${producto.id}');">
+                    <span class="txtBtn">Agregar al carrito</span>
+                  </btn>
+                </div>
+            </div>
+        </g:each>
     </div>
+      
     <script type="text/javascript">
         function addToCarrito(id) {
             console.log(id);

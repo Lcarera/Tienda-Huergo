@@ -14,7 +14,7 @@ class Producto {
         precio nullable:false
         cantidad nullable:false
         tipo nullable:false
-        talles nullable:true
+        talle nullable:true
     }
 
     static namedQueries = {

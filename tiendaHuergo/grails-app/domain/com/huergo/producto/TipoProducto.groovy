@@ -18,4 +18,8 @@ class TipoProducto {
             }
         }
     }
+
+    public String toString() {
+        return tipo
+    }
 }

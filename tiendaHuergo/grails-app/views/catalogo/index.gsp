@@ -101,7 +101,7 @@
                     alt="..."
                   />
                   <span class="txtNombre">${producto.nombre}</span>
-                  <span class="txtPrecio">$${producto.precio.toString()}</span>
+                  <span class="txtPrecio">$${producto.precioToString()}</span>
                   <btn class="btnAddCarrito" onclick="addToCarrito('${producto.id}');">
                     <span class="txtBtn">Agregar al carrito</span>
                   </btn>

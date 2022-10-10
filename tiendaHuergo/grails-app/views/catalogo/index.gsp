@@ -112,7 +112,17 @@
       
     <script type="text/javascript">
         function addToCarrito(id) {
-            console.log(id);
+            $.ajax("${createLink(controller:'catalogo', action:'ajaxAgregarCarrito')}", {
+				dataType: "json",
+				data: {productoId: id}
+			}).done(function(data) {
+				if (data.error) {
+					swal("Salio mal 🥺", "Hubo un error agregando el producto al carrito, intentalo de nuevo", "error")
+					return
+				}
+				swal("Salio joya 🥳", "Se agrego el producto a tu carrito", "success")
+				return
+			});
         }
     
     </script>

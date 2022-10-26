@@ -27,8 +27,12 @@ class ProductoService {
     }
 
     def agregarACarrito(Long productoId, User user) {
-        def carrito = Carrito.findOrSaveWhere(usuario: user)
-        carrito.save(flush:true, failOnError:true)
+        def carrito = Carrito.findByUsuario(user)
+        if(!carrito) {
+            carrito = new Carrito()
+            carrito.usuario = user
+            carrito.save(flush:true, failOnError:true)
+        }
         def producto = Producto.get(productoId)
         if(!producto){
             Throw new Exception("No se encontro el producto con id: $productoId")
@@ -38,8 +42,12 @@ class ProductoService {
         producVenta.fechaAgregado = new LocalDateTime()
         producVenta.carrito = carrito
         producVenta.save(flush:true, failOnError:true)
-        carrito.addToProductos(producVenta)
+        carrito.addToProductosVenta(producVenta)
         carrito.save(flush:true, failOnError:true)
         return
+    }
+
+    def getCarrito(User user) {
+        return Carrito.findByUsuario(user)
     }
 }

@@ -7,6 +7,7 @@ class ProductoVenta {
 
     Producto producto
     LocalDateTime fechaAgregado
+    Long cantidad = 1
 
     static belongsTo = [carrito:Carrito]
 

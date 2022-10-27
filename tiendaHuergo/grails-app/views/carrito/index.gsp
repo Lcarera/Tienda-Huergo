@@ -79,62 +79,62 @@
 		<div class="form-row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">
-			<div class="card">
-				<div class="card-body">
-				<div class="form-row">
-					<div class="col-sm-2">
-					<div class="img-wraper">
-						<img
-						src="http://www.newdesignfile.com/postpic/2012/09/small-apple-logo_154074.jpg"
-						alt="..."
-						/>
-					</div>
-					</div> 
-					<div class="col-sm-8">
-					<div class="form-row">
-						<h4 class="subTitulo">${producto.producto.nombre}</h4>
-						<br>
-						<br>
-					</div>
+				<div class="card">
+					<div class="card-body">
 						<div class="form-row">
-						<div class="col-sm-1">
-							<p >Talle</p>
-						</div>
-						<div id="talles${producto.id}" onclick="revisarNuevoTalle(this.id);" class="col-sm-11">
-							<g:hiddenField id="${producto.id}" name="talleSeleccionado" value="${producto.producto.talle.talle}"/>
-							<input type="radio" class="btn-check" name="talles${producto.id}" id="S${producto.id}" autocomplete="off">
-							<label class="btn btn-secondary" for="S${producto.id}">S</label>
-							<input type="radio" class="btn-check" name="talles${producto.id}" id="M${producto.id}" autocomplete="off">
-							<label class="btn btn-secondary" for="M${producto.id}">M</label>
-							<input type="radio" class="btn-check" name="talles${producto.id}" id="L${producto.id}" autocomplete="off">
-							<label class="btn btn-secondary" for="L${producto.id}">L</label>
-							<input type="radio" class="btn-check" name="talles${producto.id}" id="XL${producto.id}" autocomplete="off">
-							<label class="btn btn-secondary" for="XL${producto.id}">XL</label>
-						<br>
-						<br>
-						</div>
-						</div>
-						<div class="form-row">
-						<div class="col-sm-2">
-								<p >Cantidad</p>
-						</div>
-						<div class="col-sm-10">
-							<div class="form-row">
-								<g:hiddenField id="${producto.id}" name="cantidadProducto" value="${producto.cantidad}"/>
-								<button id="menos${producto.id}" onclick="menosCantidad(this.id);" class="btn btn-light">-</button>
-								<p id="cantidad${producto.id}" style="padding-left: 20px;padding-right: 20px; padding-top: 5px;">${producto.cantidad}</p>
-								<button id="mas${producto.id}" onclick="masCantidad(this.id);" class="btn btn-light">+</button>
+							<div class="col-sm-2">
+								<div class="img-wraper">
+									<img
+									src="http://www.newdesignfile.com/postpic/2012/09/small-apple-logo_154074.jpg"
+									alt="..."
+									/>
+								</div>
+							</div> 
+							<div class="col-sm-8">
+								<div class="form-row">
+									<h4 class="subTitulo">${producto.producto.nombre}</h4>
+									<br>
+									<br>
+								</div>
+								<div class="form-row">
+									<div class="col-sm-1">
+										<p >Talle</p>
+									</div>
+									<div id="talles${producto.id}" onclick="revisarNuevoTalle(this.id);" class="col-sm-11">
+										<g:hiddenField id="${producto.id}" name="talleSeleccionado" value="${producto.producto.talle.talle}"/>
+										<input type="radio" class="btn-check" name="talles${producto.id}" id="S${producto.id}" autocomplete="off">
+										<label class="btn btn-secondary" for="S${producto.id}">S</label>
+										<input type="radio" class="btn-check" name="talles${producto.id}" id="M${producto.id}" autocomplete="off">
+										<label class="btn btn-secondary" for="M${producto.id}">M</label>
+										<input type="radio" class="btn-check" name="talles${producto.id}" id="L${producto.id}" autocomplete="off">
+										<label class="btn btn-secondary" for="L${producto.id}">L</label>
+										<input type="radio" class="btn-check" name="talles${producto.id}" id="XL${producto.id}" autocomplete="off">
+										<label class="btn btn-secondary" for="XL${producto.id}">XL</label>
+									<br>
+									<br>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-sm-2">
+											<p >Cantidad</p>
+									</div>
+									<div class="col-sm-10">
+										<div class="form-row">
+											<g:hiddenField id="${producto.id}" name="cantidadProducto" value="${producto.cantidad}"/>
+											<button id="menos${producto.id}" onclick="menosCantidad(this.id);" class="btn btn-light">-</button>
+											<p id="cantidad${producto.id}" style="padding-left: 20px;padding-right: 20px; padding-top: 5px;">${producto.cantidad}</p>
+											<button id="mas${producto.id}" onclick="masCantidad(this.id);" class="btn btn-light">+</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<g:hiddenField id="${producto.id}" name="precioProducto" value="${producto.producto.precio * producto.cantidad}"/>
+								<h4 id="precioProducto${producto.id}" value="" class="precio"></h4>
 							</div>
 						</div>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<g:hiddenField id="${producto.id}" name="precioProducto" value="${producto.producto.precio * producto.cantidad}"/>
-						<h4 id="precioProducto${producto.id}" value="" class="precio"></h4>
 					</div>
 				</div>
-				</div>
-			</div>
 			</div>
 		</div>
 	</g:each>

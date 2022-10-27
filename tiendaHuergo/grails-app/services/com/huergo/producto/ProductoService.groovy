@@ -73,4 +73,19 @@ class ProductoService {
         prod.save(flush:true, failOnError:true)
 
     }
+
+    def cambiarCantidad (Long productoVentaId, Integer cantidad) {
+        def prod = ProductoVenta.get(productoVentaId)
+        if(!prod){
+            Throw new Exception("No se encontro el productoVenta con id: $productoVentaId")
+        }
+
+        prod.cantidad += cantidad
+
+        prod.save(flush:true, failOnError:true)
+        def resultado = [:]
+        resultado.cantidad = prod.cantidad
+        resultado.precio = prod.cantidad * prod.producto.precio
+        return resultado
+    }
 }

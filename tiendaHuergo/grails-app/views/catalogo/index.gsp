@@ -117,10 +117,10 @@
 				data: {productoId: id}
 			}).done(function(data) {
 				if (data.error) {
-					swal("Salio mal 🥺", "Hubo un error agregando el producto al carrito, intentalo de nuevo", "error")
+					Swal.fire("Salio mal 🥺", "Hubo un error agregando el producto al carrito, intentalo de nuevo", "error")
 					return
 				}
-				swal("Salio joya 🥳", "Se agrego el producto a tu carrito", "success")
+				Swal.fire("Salio joya 🥳", "Se agrego el producto a tu carrito", "success")
 				return
 			});
         }

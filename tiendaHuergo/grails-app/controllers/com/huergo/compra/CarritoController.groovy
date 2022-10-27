@@ -83,4 +83,20 @@ class CarritoController {
 		}
     }
 
+    def eliminarProducto(Long productoVentaId) {
+        def resultado = [:]
+		try {
+			productoService.eliminarProducto(productoVentaId)
+			resultado.error = false
+		}
+		catch(Exception e) {
+			log.error(e.message)
+			println e.stackTrace?.findAll{it.toString()?.with{contains(".groovy:") && ! toLowerCase().with{contains("transaction") || contains("springsecurity")}}}?.join("\n")
+			resultado.error = true
+		}
+		finally{
+			render resultado as JSON
+		}
+    }
+
 }

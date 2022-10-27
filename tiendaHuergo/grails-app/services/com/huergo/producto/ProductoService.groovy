@@ -88,4 +88,12 @@ class ProductoService {
         resultado.precio = prod.cantidad * prod.producto.precio
         return resultado
     }
+
+    def eliminarProducto(Long productoVentaId) {
+        def prod = ProductoVenta.get(productoVentaId)
+        if(!prod){
+            Throw new Exception("No se encontro el productoVenta con id: $productoVentaId")
+        }
+        prod.delete(flush:true, failOnError:true)
+    }
 }

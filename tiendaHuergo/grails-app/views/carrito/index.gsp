@@ -76,7 +76,7 @@
 		</div>
 	</div>
 	<g:each var = "producto" in="${carrito?.productosVenta.sort{it.id}}">
-		<div class="form-row">
+		<div id="div${producto.id}" class="form-row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">
 				<div class="card">
@@ -129,6 +129,7 @@
 								</div>
 							</div>
 							<div class="col-sm-2">
+								<iconify-icon id="${producto.id}" icon="bxs:trash-alt" style="font-size: x-large;float: right;cursor: pointer;" onclick="eliminarProducto(this.id);"></iconify-icon>
 								<g:hiddenField id="${producto.id}" name="precioProducto" value="${producto.producto.precio * producto.cantidad}"/>
 								<h4 id="precioProducto${producto.id}" value="" class="precio"></h4>
 							</div>
@@ -185,7 +186,7 @@
 			}
 		}).done(function(data) {
 			if (data.error) {
-				swal("Salio mal 🥺", "Hubo un error cambiando el talle de tu producto, intentalo de nuevo", "error")
+				Swal.fire("Salio mal 🥺", "Hubo un error cambiando el talle de tu producto, intentalo de nuevo", "error")
 			}
 			return
 		});
@@ -200,7 +201,7 @@
 			}
 		}).done(function(data) {
 			if (data.error) {
-				swal("Salio mal 🥺", "Hubo un error cambiando la cantidad de tu producto, intentalo de nuevo", "error")
+				Swal.fire("Salio mal 🥺", "Hubo un error cambiando la cantidad de tu producto, intentalo de nuevo", "error")
 				return
 			}
 			
@@ -223,7 +224,7 @@
 			}
 		}).done(function(data) {
 			if (data.error) {
-				swal("Salio mal 🥺", "Hubo un error cambiando la cantidad de tu producto, intentalo de nuevo", "error")
+				Swal.fire("Salio mal 🥺", "Hubo un error cambiando la cantidad de tu producto, intentalo de nuevo", "error")
 				return
 			}
 			$("#cantidad" + id).text(data.cantidad);
@@ -231,6 +232,34 @@
 			$("#menos" + id).show();
 			return
 		});
+	}
+
+	function eliminarProducto(productoId) {
+		Swal.fire({
+			title: '¿Estás seguro?',
+			text: "Se eliminara el producto de tu carrito",
+			type:"question",
+			showCancelButton: true,
+			confirmButtonText: 'Si, eliminar.',
+			cancelButtonText: 'No, cancelar.'
+			}).then((result) => {
+				/* Read more about isConfirmed, isDenied below */
+				if (result.isConfirmed) {
+					$.ajax("${createLink(controller:'carrito', action:'eliminarProducto')}", {
+						dataType: "json",
+						data: {
+							productoVentaId: productoId
+						}
+					}).done(function(data) {
+						if (data.error) {
+							Swal.fire("Salio mal 🥺", "Hubo un error cambiando la cantidad de tu producto, intentalo de nuevo", "error")
+							return
+						}
+						$("#div" + productoId).hide();
+						return
+					});
+				}
+		})	
 	}
 </script>
 </body>

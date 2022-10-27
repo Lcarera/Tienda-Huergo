@@ -14,7 +14,6 @@ class CarritoController {
 
     def index() {
         def carrito = productoService.getCarrito(accessRulesService.currentUser)
-
         [carrito:carrito]
     }
 
@@ -28,6 +27,22 @@ class CarritoController {
 
     def delete() {
     
+    }
+
+    def ajaxCambiarTalle(Long productoVentaId, String talle) {
+        def resultado = [:]
+		try {
+			productoService.cambiarTalle(productoVentaId, talle)
+			resultado.error = false
+		}
+		catch(Exception e) {
+			log.error(e.message)
+			println e.stackTrace?.findAll{it.toString()?.with{contains(".groovy:") && ! toLowerCase().with{contains("transaction") || contains("springsecurity")}}}?.join("\n")
+			resultado.error = true
+		}
+		finally{
+			render resultado as JSON
+		}
     }
 
 }

@@ -50,4 +50,27 @@ class ProductoService {
     def getCarrito(User user) {
         return Carrito.findByUsuario(user)
     }
+
+    def cambiarTalle(Long productoVentaId, String talle) {
+        def prod = ProductoVenta.get(productoVentaId)
+        if(!prod){
+            Throw new Exception("No se encontro el productoVenta con id: $productoVentaId")
+        }
+
+        def talleNuevo = Talle.findByTalle(talle)
+
+        if(!talleNuevo){
+            Throw new Exception("No se encontro el talle: $talle")
+        }
+
+        def nuevoProducto = Producto.findByNombreAndTalle(prod.producto.nombre, talleNuevo)
+
+        if(!talleNuevo){
+            Throw new Exception("No se encontro el producto: $prod.producto.nombre con talle $talle")
+        }
+
+        prod.producto = nuevoProducto
+        prod.save(flush:true, failOnError:true)
+
+    }
 }

@@ -9,12 +9,13 @@ class ProductoVenta {
     LocalDateTime fechaAgregado
     Long cantidad = 1
 
-    static belongsTo = [carrito:Carrito]
+    static belongsTo = [carrito:Carrito, compra:Compra]
 
     static constraints = {
         producto nullable:false
         fechaAgregado nullable:false
-        carrito nullable:false
+        carrito nullable:true
+        compra nullable:true
     }
 
 }

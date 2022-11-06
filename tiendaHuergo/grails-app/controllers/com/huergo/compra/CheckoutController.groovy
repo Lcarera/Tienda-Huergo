@@ -7,6 +7,8 @@ import grails.plugin.springsecurity.SpringSecurityUtils
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 class CheckoutController {
 
+    def compraService
+
     def index() {
     
     }
@@ -21,6 +23,10 @@ class CheckoutController {
 
     def delete() {
     
+    }
+
+    def comprar() {
+        
     }
 
 }

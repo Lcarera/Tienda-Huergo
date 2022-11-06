@@ -92,7 +92,7 @@
 		<div class="col-md-7"></div>
 		<div class="col-md-2">
 			<br>
-			<g:link controller="checkout" action="index" style="float: right;background: rgba(0, 44, 133, 1)" class="btn btn-primary btn-block btn-lg">Terminar compra</g:link>
+			<g:link controller="checkout" action="comprar" style="float: right;background: rgba(0, 44, 133, 1)" class="btn btn-primary btn-block btn-lg">Terminar compra</g:link>
 		</div>
 	</div>
    

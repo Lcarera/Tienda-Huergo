@@ -3,9 +3,18 @@
     <head>
         <title><g:if env="development">Grails Runtime Exception</g:if><g:else>Error</g:else></title>
         <meta name="layout" content="main">
+        <style>
+            * {
+              box-sizing: border-box;
+            }
+            body {
+              font-size: 14px;
+              padding-top: 80px;
+            }
+        </style>
         <g:if env="development"><asset:stylesheet src="errors.css"/></g:if>
     </head>
-    <body>
+    <body >
         <g:if env="development">
             <g:if test="${Throwable.isInstance(exception)}">
                 <g:renderException exception="${exception}" />

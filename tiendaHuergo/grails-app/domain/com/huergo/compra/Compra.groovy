@@ -1,5 +1,5 @@
 package com.huergo.compra
-
+import com.huergo.auth.User
 class Compra {
     String nomreContacto
     Boolean tieneEnvio

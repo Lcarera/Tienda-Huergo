@@ -25,8 +25,20 @@ class CheckoutController {
     
     }
 
-    def comprar() {
-        
+    def hacerCompra( String nombreApellido, String direccion, String codigoPostal, String ciudad, String departamento) {
+        def resultado = [:]
+		try {
+			compraService.hacerCompra(nombreApellido, direccion, codigoPostal, ciudad, departamento)
+			resultado.error = false
+		}
+		catch(Exception e) {
+			log.error(e.message)
+			println e.stackTrace?.findAll{it.toString()?.with{contains(".groovy:") && ! toLowerCase().with{contains("transaction") || contains("springsecurity")}}}?.join("\n")
+			resultado.error = true
+		}
+		finally{
+			render resultado as JSON
+		}
     }
 
 }

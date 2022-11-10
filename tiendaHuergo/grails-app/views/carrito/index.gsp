@@ -148,7 +148,9 @@
 		<div class="col-md-9"></div>
 		<div class="col-md-2">
 			<br>
-			<g:link controller="checkout" action="index" style="float: right;background: rgba(0, 44, 133, 1)" class="btn btn-primary btn-block btn-lg">Comprar</g:link>
+			<g:if test="${carrito?.productosVenta}">
+				<g:link controller="checkout" action="index" style="float: right;background: rgba(0, 44, 133, 1)" class="btn btn-primary btn-block btn-lg">Comprar</g:link>
+			</g:if>
 		</div>
 	</div>
 	

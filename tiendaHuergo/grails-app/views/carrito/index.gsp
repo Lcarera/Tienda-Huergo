@@ -88,7 +88,7 @@
 									<div class="col-sm-2">
 										<div class="img-wraper">
 											<img
-											src="http://www.newdesignfile.com/postpic/2012/09/small-apple-logo_154074.jpg"
+											src="https://huergo.com.ar/Img/logo.png"
 											alt="..."
 											/>
 										</div>

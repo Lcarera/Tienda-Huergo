@@ -4,13 +4,25 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.SpringSecurityUtils
 
+import com.huergo.producto.ProductoService
+import com.huergo.AccessRulesService
+
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 class CheckoutController {
 
     def compraService
+    def productoService
+    def accessRulesService
 
     def index() {
-    
+        def carrito = productoService.getCarrito(accessRulesService.currentUser)
+        def total = 0
+        def cantidad = 0
+        for (prod in carrito.productosVenta) {
+            cantidad += 1
+            total += prod.cantidad * prod.producto.precio
+        }
+        [cantidad:cantidad, total:total]
     }
 
     def show() {

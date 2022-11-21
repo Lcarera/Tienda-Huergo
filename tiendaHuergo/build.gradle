@@ -72,6 +72,8 @@ bootRun {
     addResources = true
     String springProfilesActive = 'spring.profiles.active'
     systemProperty springProfilesActive, System.getProperty(springProfilesActive)
+    systemProperty 'server.port', '8081'
+    systemProperty 'server.host', '192.168.1.110'
 }
 
 tasks.withType(Test) {

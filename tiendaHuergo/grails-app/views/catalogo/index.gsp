@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <!--  <link
-      href="https://fonts.googleapis.com/css?family=Arial&display=swap"
-      rel="stylesheet"
-    /> -->
+    <!--  <link
+			href="https://fonts.googleapis.com/css?family=Arial&display=swap"
+			rel="stylesheet"
+		/> -->
     <meta name="layout" content="main" />
+
     <style>
       * {
         box-sizing: border-box;
@@ -91,40 +92,53 @@
   </head>
   <body>
     <div class="row">
-        <g:each var = "producto" in="${productos}">
-            <div class="col-lg-4">
-                <br />
-                <div class="cardStock">
-                  <img
-                    src="http://www.newdesignfile.com/postpic/2012/09/small-apple-logo_154074.jpg"
-                    class="logoHuergo"
-                    alt="..."
-                  />
-                  <span class="txtNombre">${producto.nombre}</span>
-                  <span class="txtPrecio">$${producto.precioToString()}</span>
-                  <btn class="btnAddCarrito" onclick="addToCarrito('${producto.id}');">
-                    <span class="txtBtn">Agregar al carrito</span>
-                  </btn>
-                </div>
-            </div>
-        </g:each>
+      <g:each var="producto" in="${productos}">
+        <div class="col-lg-4">
+          <br />
+          <div class="cardStock">
+            <img
+              src="https://huergo.com.ar/Img/logo.png"
+              class="logoHuergo"
+              alt="..."
+            />
+            <span class="txtNombre">${producto.nombre}</span>
+            <span class="txtPrecio">$${producto.precioToString()}</span>
+            <btn
+              class="btnAddCarrito"
+              onclick="addToCarrito('${producto.id}');"
+            >
+              <span class="txtBtn">Agregar al carrito</span>
+            </btn>
+          </div>
+        </div>
+      </g:each>
     </div>
-      
+
     <script type="text/javascript">
-        function addToCarrito(id) {
-            $.ajax("${createLink(controller:'catalogo', action:'ajaxAgregarCarrito')}", {
-				dataType: "json",
-				data: {productoId: id}
-			}).done(function(data) {
-				if (data.error) {
-					Swal.fire("Salio mal 🥺", "Hubo un error agregando el producto al carrito, intentalo de nuevo", "error")
-					return
-				}
-				Swal.fire("Salio joya 🥳", "Se agrego el producto a tu carrito", "success")
-				return
-			});
-        }
-    
+      function addToCarrito(id) {
+        $.ajax(
+          "${createLink(controller:'catalogo', action:'ajaxAgregarCarrito')}",
+          {
+            dataType: "json",
+            data: { productoId: id },
+          }
+        ).done(function (data) {
+          if (data.error) {
+            Swal.fire(
+              "Salio mal 🥺",
+              "Hubo un error agregando el producto al carrito, intentalo de nuevo",
+              "error"
+            );
+            return;
+          }
+          Swal.fire(
+            "Salio joya 🥳",
+            "Se agrego el producto a tu carrito",
+            "success"
+          );
+          return;
+        });
+      }
     </script>
   </body>
 </html>
